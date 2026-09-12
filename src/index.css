@@ -52,10 +52,10 @@ body {
 @keyframes still-drift {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) scale(1.08);
+    transform: translate3d(0, 0, 0) scale(1.14);
   }
   50% {
-    transform: translate3d(-1.6%, 1.2%, 0) scale(1.12);
+    transform: translate3d(-3.2%, 2.2%, 0) scale(1.22);
   }
 }
 
@@ -97,7 +97,7 @@ body {
 }
 
 .still-life-plate {
-  animation: still-drift 28s ease-in-out infinite;
+  animation: still-drift 16s ease-in-out infinite;
 }
 
 .still-life-mote {
@@ -105,7 +105,7 @@ body {
 }
 
 .still-life-gleam {
-  animation: gleam 11s ease-in-out infinite;
+  animation: gleam 7s ease-in-out infinite;
 }
 
 .still-life-liquid {
