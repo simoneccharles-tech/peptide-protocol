@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import { FAVOURITE_PEPTIDES } from '../data/peptides'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { HeroStillLife } from './HeroStillLife'
+import { HeroVideo } from './HeroVideo'
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -152,11 +152,7 @@ export default function Hero() {
         </motion.div>
 
         <div className="relative space-y-4">
-          <HeroStillLife
-            image="/hero-vial-still-life.png"
-            alt="Animated still-life of unlabeled peptide vials, drifting light and a slowly rotating molecular model"
-            className="h-[380px] w-full sm:h-[460px] md:h-[560px]"
-          />
+          <HeroVideo className="h-[380px] w-full sm:h-[460px] md:h-[560px]" />
 
           <div className="rounded-3xl border border-line bg-paper p-6 shadow-soft">
             <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-ink">
