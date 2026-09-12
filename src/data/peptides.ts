@@ -68,6 +68,29 @@ export const PEPTIDES: Peptide[] = [
   },
 ]
 
+export const FAVOURITE_PEPTIDES = [
+  {
+    name: 'Retatrutide',
+    dose: '10mg',
+    note: 'Triple agonist (GLP-1/GIP/glucagon) researched for weight management.',
+  },
+  {
+    name: 'GHK-Cu',
+    dose: '100mg',
+    note: 'Copper peptide researched for skin regeneration, hair and collagen synthesis.',
+  },
+  {
+    name: 'NAD+',
+    dose: '500mg',
+    note: 'Researched for cellular energy, longevity and cognitive support.',
+  },
+  {
+    name: 'DSIP',
+    dose: '10mg',
+    note: 'Delta Sleep-Inducing Peptide researched for sleep quality and stress modulation.',
+  },
+] as const
+
 export interface Protocol {
   name: string
   forWho: string

@@ -11,14 +11,14 @@ export default function Protocols() {
     <section id="protocols" className="relative px-6 py-28 sm:py-36 md:px-16 lg:px-20">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.28em] text-white/40">Packages</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-ink">Packages</p>
           <h2
-            className="mt-5 max-w-2xl font-serif text-4xl leading-[1.05] text-white sm:text-5xl md:text-6xl"
+            className="mt-5 max-w-2xl font-display text-4xl leading-[1.05] text-charcoal sm:text-5xl md:text-6xl"
             style={{ letterSpacing: '-0.01em' }}
           >
-            Choose your <span className="italic">protocol</span>
+            Choose your <span className="italic text-ink">protocol</span>
           </h2>
-          <p className="mt-5 max-w-xl text-sm font-light leading-relaxed text-white/55 sm:text-base">
+          <p className="mt-5 max-w-xl text-sm font-normal leading-relaxed text-ink sm:text-base">
             Every package is physician led. A UK consultation, personalised dosing,
             and a two month supply buffer are included.
           </p>
@@ -29,27 +29,27 @@ export default function Protocols() {
             <Reveal
               key={protocol.name}
               delay={i * 100}
-              className={`flex flex-col rounded-2xl border p-8 backdrop-blur-sm ${
+              className={`flex flex-col rounded-2xl border p-8 ${
                 protocol.featured
-                  ? 'border-white/40 bg-white/[0.04]'
-                  : 'border-white/12 bg-white/[0.02]'
+                  ? 'border-terracotta/40 bg-paper shadow-soft'
+                  : 'border-line bg-paper/70'
               }`}
             >
               {protocol.featured && (
-                <span className="mb-5 inline-flex w-fit items-center rounded-full border border-white/25 px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-white/80">
+                <span className="mb-5 inline-flex w-fit items-center rounded-full border border-terracotta/30 px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-terracotta">
                   Most chosen
                 </span>
               )}
 
-              <h3 className="font-serif text-2xl text-white">{protocol.name}</h3>
-              <p className="mt-2 text-sm font-light text-white/55">{protocol.forWho}</p>
+              <h3 className="font-display text-2xl text-charcoal">{protocol.name}</h3>
+              <p className="mt-2 text-sm font-normal text-ink">{protocol.forWho}</p>
 
               <div className="mt-6 flex items-baseline gap-2">
-                <span className="font-serif text-4xl text-white">
+                <span className="font-display text-4xl text-charcoal">
                   {priceWithCurrency(protocol.price)}
                 </span>
                 {protocol.period && (
-                  <span className="text-sm font-light text-white/45">
+                  <span className="text-sm font-normal text-ink">
                     {protocol.period}
                   </span>
                 )}
@@ -59,7 +59,7 @@ export default function Protocols() {
                 {protocol.compounds.map((c) => (
                   <span
                     key={c}
-                    className="rounded-full border border-white/12 px-2.5 py-1 text-xs font-light text-white/65"
+                    className="rounded-full border border-line px-2.5 py-1 text-xs font-normal text-ink"
                   >
                     {c}
                   </span>
@@ -69,18 +69,18 @@ export default function Protocols() {
               <ul className="mt-6 flex-1 space-y-3">
                 {protocol.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
-                    <Check className="mt-0.5 h-4 w-4 flex-none text-white/80" strokeWidth={2} />
-                    <span className="text-sm font-light text-white/70">{f}</span>
+                    <Check className="mt-0.5 h-4 w-4 flex-none text-terracotta" strokeWidth={2} />
+                    <span className="text-sm font-normal text-charcoal/80">{f}</span>
                   </li>
                 ))}
               </ul>
 
               <a
                 href="#booking"
-                className={`mt-8 inline-block px-6 py-4 text-center text-xs font-medium uppercase tracking-[0.2em] transition ${
+                className={`mt-8 inline-block rounded-full px-6 py-4 text-center text-xs font-medium uppercase tracking-[0.2em] transition ${
                   protocol.featured
-                    ? 'bg-white text-black hover:bg-white/90'
-                    : 'border border-white/25 text-white hover:bg-white hover:text-black'
+                    ? 'bg-terracotta text-cream hover:opacity-90'
+                    : 'border border-line text-charcoal hover:bg-sage/40'
                 }`}
               >
                 Book this protocol
@@ -89,7 +89,7 @@ export default function Protocols() {
           ))}
         </div>
 
-        <p className="mt-6 text-xs font-light text-white/35">
+        <p className="mt-6 text-xs font-normal text-ink">
           Prices are indicative and confirmed at consultation. Compounds are
           dispensed only after a UK physician review.
         </p>
