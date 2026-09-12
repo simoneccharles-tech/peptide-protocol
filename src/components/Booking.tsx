@@ -28,8 +28,8 @@ const GOALS = [
 const TIMES = ['Morning', 'Afternoon', 'Evening']
 
 const inputClass =
-  'w-full border-0 border-b border-white/15 bg-transparent px-0 py-3 text-sm text-white placeholder-white/35 outline-none transition focus:border-white/60'
-const labelClass = 'mb-1.5 block text-[11px] font-medium uppercase tracking-[0.2em] text-white/40'
+  'w-full border-0 border-b border-line bg-transparent px-0 py-3 text-sm text-charcoal placeholder-ink/50 outline-none transition focus:border-terracotta'
+const labelClass = 'mb-1.5 block text-[11px] font-medium uppercase tracking-[0.2em] text-ink'
 
 export default function Booking() {
   const [form, setForm] = useState<FormState>(EMPTY)
@@ -66,14 +66,14 @@ export default function Booking() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
         {/* Left: pitch */}
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.28em] text-white/40">Booking</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-ink">Booking</p>
           <h2
-            className="mt-5 font-serif text-4xl leading-[1.05] text-white sm:text-5xl md:text-6xl"
+            className="mt-5 font-display text-4xl leading-[1.05] text-charcoal sm:text-5xl md:text-6xl"
             style={{ letterSpacing: '-0.01em' }}
           >
-            Book your <span className="italic">consultation</span>
+            Book your <span className="italic text-ink">consultation</span>
           </h2>
-          <p className="mt-5 max-w-md text-sm font-light leading-relaxed text-white/55 sm:text-base">
+          <p className="mt-5 max-w-md text-sm font-normal leading-relaxed text-ink sm:text-base">
             Tell us where you want to start. A UK physician reviews your request and
             confirms your consultation on WhatsApp within 48 hours.
           </p>
@@ -85,22 +85,22 @@ export default function Booking() {
               'Dispensed through MHRA-registered pharmacy partners',
             ].map((point) => (
               <div key={point} className="flex items-start gap-3">
-                <Check className="mt-0.5 h-4 w-4 flex-none text-white/80" strokeWidth={2} />
-                <span className="text-sm font-light text-white/70">{point}</span>
+                <Check className="mt-0.5 h-4 w-4 flex-none text-terracotta" strokeWidth={2} />
+                <span className="text-sm font-normal text-charcoal/80">{point}</span>
               </div>
             ))}
           </div>
         </Reveal>
 
         {/* Right: form or success */}
-        <div className="border border-white/12 bg-white/[0.02] p-7 backdrop-blur-sm sm:p-9">
+        <div className="rounded-3xl border border-line bg-paper p-7 shadow-soft sm:p-9">
           {submitted ? (
             <div className="flex h-full flex-col items-center justify-center py-12 text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/25">
-                <Check className="h-7 w-7 text-white" strokeWidth={1.75} />
+              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-line">
+                <Check className="h-7 w-7 text-terracotta" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-6 font-serif text-3xl text-white">Request received</h3>
-              <p className="mt-3 max-w-sm text-sm font-light leading-relaxed text-white/55">
+              <h3 className="mt-6 font-display text-3xl text-charcoal">Request received</h3>
+              <p className="mt-3 max-w-sm text-sm font-normal leading-relaxed text-ink">
                 Thank you, {form.name.split(' ')[0] || 'there'}. A UK physician will
                 confirm your consultation on WhatsApp within 48 hours.
               </p>
@@ -109,7 +109,7 @@ export default function Booking() {
                   setForm(EMPTY)
                   setSubmitted(false)
                 }}
-                className="mt-6 text-xs font-medium uppercase tracking-[0.2em] text-white/50 transition hover:text-white"
+                className="mt-6 text-xs font-medium uppercase tracking-[0.2em] text-ink transition hover:text-charcoal"
               >
                 Send another request
               </button>
@@ -164,7 +164,7 @@ export default function Booking() {
                     onChange={(e) => update('goal', e.target.value)}
                   >
                     {GOALS.map((g) => (
-                      <option key={g} value={g} className="bg-[#0a0a0a] text-white">
+                      <option key={g} value={g} className="bg-paper text-charcoal">
                         {g}
                       </option>
                     ))}
@@ -179,7 +179,7 @@ export default function Booking() {
                     onChange={(e) => update('time', e.target.value)}
                   >
                     {TIMES.map((t) => (
-                      <option key={t} value={t} className="bg-[#0a0a0a] text-white">
+                      <option key={t} value={t} className="bg-paper text-charcoal">
                         {t}
                       </option>
                     ))}
@@ -201,13 +201,13 @@ export default function Booking() {
 
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-3 bg-white px-6 py-4 text-xs font-medium uppercase tracking-[0.2em] text-black transition hover:bg-white/90"
+                className="group flex w-full items-center justify-center gap-3 rounded-full bg-terracotta px-6 py-4 text-xs font-medium uppercase tracking-[0.2em] text-cream transition hover:opacity-90"
               >
                 Request your consultation
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
 
-              <p className="text-center text-xs font-light text-white/35">
+              <p className="text-center text-xs font-normal text-ink">
                 Or message us directly on WhatsApp at +62 823 2213 3001.
               </p>
             </form>

@@ -1,90 +1,194 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform, type Variants } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-
-const VIDEO_URL =
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260715_082433_69699cf8-444b-4484-93cc-053e57896dfd.mp4'
+import { motion, type Variants } from 'framer-motion'
+import {
+  ArrowRight,
+  BadgeCheck,
+  FlaskConical,
+  GraduationCap,
+  MapPin,
+  MessageCircle,
+  PackageCheck,
+  ShieldCheck,
+  Sparkles,
+} from 'lucide-react'
+import { FAVOURITE_PEPTIDES } from '../data/peptides'
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { HeroStillLife } from './HeroStillLife'
 
 const container: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.15 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.08 },
   },
 }
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.2, 0.7, 0.2, 1] },
+    transition: { duration: 0.7, ease: [0.2, 0.7, 0.2, 1] },
   },
 }
 
+const TRUST = [
+  { icon: BadgeCheck, title: 'Evidence-led', detail: 'science first' },
+  { icon: FlaskConical, title: 'Science-led', detail: 'papers cited' },
+  { icon: PackageCheck, title: 'We respond same day', detail: 'fast turnaround' },
+  { icon: ShieldCheck, title: 'No upsells', detail: 'no affiliate fluff' },
+]
+
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null)
-  // Parallax contained WITHIN the hero (absolute, not fixed) so it never
-  // affects how the sections below composite.
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
+  const reduce = usePrefersReducedMotion()
 
   return (
-    <section ref={ref} id="home" className="relative min-h-screen w-full overflow-hidden">
-      {/* Video background (absolute, parallax) */}
-      <motion.div className="absolute inset-0 z-0" style={{ y }}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full scale-125 object-cover"
-        >
-          <source src={VIDEO_URL} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black" />
-      </motion.div>
+    <section id="home" className="relative overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-sage/40 blur-3xl"
+        animate={reduce ? undefined : { x: [0, 30, 0], y: [0, 18, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-terracotta/20 blur-3xl"
+        animate={reduce ? undefined : { x: [0, -22, 0], y: [0, -16, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 flex min-h-screen flex-col justify-center px-6 pb-16 pt-28 md:px-16 lg:px-20">
-        <motion.div variants={container} initial="hidden" animate="visible" className="max-w-4xl">
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-28 md:grid-cols-[1.05fr_0.95fr] md:pb-24 md:pt-32">
+        <motion.div variants={container} initial="hidden" animate="visible">
           <motion.div
             variants={item}
-            className="liquid-glass mb-8 inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-xs font-medium text-white/85 sm:text-sm"
+            className="inline-flex items-center gap-2 rounded-full border border-line bg-paper/60 px-3 py-1 text-xs text-ink"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
-            UK Prescribed · Physician Led
+            <MapPin className="h-3 w-3" aria-hidden="true" />
+            Independent peptide education · Based in Bali
           </motion.div>
 
           <motion.h1
             variants={item}
-            className="font-serif text-[3.5rem] leading-[0.92] text-white sm:text-[5.5rem] md:text-[7rem] lg:text-[8.5rem]"
-            style={{ letterSpacing: '-0.02em' }}
+            className="mt-6 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-charcoal sm:text-5xl md:text-6xl"
           >
-            Precision
+            Discover what peptides
             <br />
-            Peptide <span className="italic">Therapy</span>
+            <span className="text-ink">can actually do for you.</span>
           </motion.h1>
 
-          <motion.p
+          <motion.h2
             variants={item}
-            className="mt-6 max-w-lg text-lg font-light text-white/75 sm:text-xl md:text-2xl"
+            className="mt-4 font-display text-xl font-normal text-ink sm:text-2xl"
           >
-            Evidence based peptides. UK regulated. Real results.
+            Cutting through the hype with honest, evidence-based guidance.
+          </motion.h2>
+
+          <motion.p variants={item} className="mt-5 max-w-xl text-base text-ink sm:text-lg">
+            Tell us your goals, health concerns, or story. Our AI reviews the latest research
+            and matches you to the peptides with the strongest clinical support — then explains
+            the actual studies in plain English.
           </motion.p>
 
-          <motion.a
+          <motion.p variants={item} className="mt-4 max-w-xl text-base text-ink sm:text-lg">
+            <span className="font-medium text-charcoal">Evidence first, then supply.</span> We
+            translate the science so you can make better-informed decisions, then supply the
+            peptides you choose.
+          </motion.p>
+
+          <motion.div variants={item} className="mt-8 flex flex-col gap-3">
+            <a
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-terracotta px-7 py-3.5 text-base font-medium text-cream shadow-soft transition hover:opacity-90"
+              href="#booking"
+            >
+              <Sparkles className="h-4 w-4" aria-hidden="true" />
+              Find My Protocol — 60-second consult
+            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-cream px-5 py-2.5 text-sm font-medium transition hover:bg-sage/40"
+                href="#peptides"
+              >
+                <FlaskConical className="h-4 w-4" aria-hidden="true" />
+                Browse the library
+              </a>
+              <a
+                href="#first-time"
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-cream px-5 py-2.5 text-sm font-medium transition hover:bg-sage/40"
+              >
+                <GraduationCap className="h-4 w-4" aria-hidden="true" />
+                Peptides 101
+              </a>
+            </div>
+            <div className="mt-2 rounded-2xl border border-line bg-paper/60 p-4">
+              <a
+                href="https://api.whatsapp.com/send?phone=6282322133001&text=Hi!%20I%20found%20you%20via%20The%20Peptide%20Protocol%20and%20I%27d%20like%20to%20enquire%20about%20sourcing%20peptides."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
+              >
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                Order directly on WhatsApp
+              </a>
+              <p className="mt-2 text-xs text-ink">Live chat, no forms, same-day response.</p>
+            </div>
+            <p className="text-xs text-ink">
+              Free · no signup · unlocks the full science vault for every peptide we cover.
+            </p>
+          </motion.div>
+
+          <motion.div
             variants={item}
-            href="#booking"
-            className="group mt-10 inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-black transition hover:bg-white/90"
+            className="mt-10 grid grid-cols-2 gap-6 text-sm text-ink sm:grid-cols-4"
           >
-            Begin your protocol
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </motion.a>
+            {TRUST.map(({ icon: Icon, title, detail }) => (
+              <div key={title} className="flex items-start gap-2">
+                <Icon className="mt-0.5 h-4 w-4 text-terracotta" aria-hidden="true" />
+                <div>
+                  <div className="font-display text-charcoal">{title}</div>
+                  {detail}
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
+
+        <div className="relative space-y-4">
+          <HeroStillLife
+            image="/hero-vial-still-life.png"
+            alt="Animated still-life of unlabeled peptide vials, drifting light and a slowly rotating molecular model"
+            className="h-[380px] w-full sm:h-[460px] md:h-[560px]"
+          />
+
+          <div className="rounded-3xl border border-line bg-paper p-6 shadow-soft">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-ink">
+              <FlaskConical className="h-4 w-4" aria-hidden="true" />
+              Our favourite peptides right now
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {FAVOURITE_PEPTIDES.map((peptide) => (
+                <div
+                  key={peptide.name}
+                  className="rounded-2xl bg-sage/50 px-4 py-3 text-sm text-ink"
+                >
+                  <div className="font-display text-sm font-medium text-charcoal">
+                    {peptide.name}
+                    <span className="ml-2 text-xs font-normal text-ink">{peptide.dose}</span>
+                  </div>
+                  <p className="mt-1 text-xs leading-relaxed">{peptide.note}</p>
+                </div>
+              ))}
+            </div>
+            <a
+              className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-terracotta hover:underline"
+              href="#peptides"
+            >
+              Explore the full library <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+            <div className="mt-3 flex items-center gap-2 text-xs text-ink">
+              <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
+              Independent, evidence-based and COA-verified.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

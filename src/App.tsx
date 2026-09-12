@@ -1,5 +1,6 @@
 import Nav from './components/Nav'
 import Hero from './components/Hero'
+import Education from './components/Education'
 import Gallery from './components/Gallery'
 import Protocols from './components/Protocols'
 import Consultations from './components/Consultations'
@@ -8,9 +9,10 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-black text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-cream text-charcoal">
       <Nav />
       <Hero />
+      <Education />
       <Gallery />
       <Protocols />
       <Consultations />

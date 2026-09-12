@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --cream: #f2eee6;
+  --charcoal: #281c18;
+  --terracotta: #c76749;
+  --sage: #c7d7c0;
+  --gradient-hero: linear-gradient(
+    180deg,
+    var(--cream) 0%,
+    color-mix(in oklab, var(--sage) 35%, var(--cream)) 100%
+  );
+  --shadow-soft: 0 1px 2px #43251a0d, 0 12px 40px -16px #43251a2e;
+}
+
 html,
 body,
 #root {
@@ -14,23 +27,19 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: #000000;
-  color: #ffffff;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
 }
 
-/* Instrument Serif ships a single 400 weight. Give it graceful defaults. */
-.font-serif {
-  font-weight: 400;
+.font-display {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
 }
 
-/* ---- Scroll reveal (CSS-transition driven, robust) ----
-   Content is only briefly offset; an IntersectionObserver adds `is-visible`.
-   CSS transitions complete on the compositor even under main-thread load, and
-   a JS fallback forces visibility so content is never permanently hidden. */
+/* ---- Scroll reveal (CSS-transition driven, robust) ---- */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(28px);
   transition:
     opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
     transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -39,47 +48,83 @@ body {
   opacity: 1;
   transform: none;
 }
+
+@keyframes still-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.08);
+  }
+  50% {
+    transform: translate3d(-1.6%, 1.2%, 0) scale(1.12);
+  }
+}
+
+@keyframes mote-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate3d(12px, -28px, 0);
+    opacity: 0.55;
+  }
+}
+
+@keyframes gleam {
+  0% {
+    transform: translateX(-130%) rotate(18deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.45;
+  }
+  40%,
+  100% {
+    transform: translateX(160%) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes liquid-shift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+.still-life-plate {
+  animation: still-drift 28s ease-in-out infinite;
+}
+
+.still-life-mote {
+  animation: mote-float 9s ease-in-out infinite;
+}
+
+.still-life-gleam {
+  animation: gleam 11s ease-in-out infinite;
+}
+
+.still-life-liquid {
+  animation: liquid-shift 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
-}
-
-/* ---- Liquid glass (frosted) ----
-   Declared in the `components` layer so Tailwind positioning utilities
-   (absolute/fixed) in the later `utilities` layer win over its own
-   `position: relative` when both are on one element. */
-@layer components {
-  .liquid-glass {
-    background: rgba(255, 255, 255, 0.01);
-    background-blend-mode: luminosity;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: none;
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
-  }
-  .liquid-glass::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.4px;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.45) 0%,
-      rgba(255, 255, 255, 0.15) 20%,
-      rgba(255, 255, 255, 0) 40%,
-      rgba(255, 255, 255, 0) 60%,
-      rgba(255, 255, 255, 0.15) 80%,
-      rgba(255, 255, 255, 0.45) 100%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+  .still-life-plate,
+  .still-life-mote,
+  .still-life-gleam,
+  .still-life-liquid {
+    animation: none;
   }
 }

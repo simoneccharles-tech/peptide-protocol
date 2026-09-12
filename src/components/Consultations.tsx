@@ -28,16 +28,16 @@ export default function Consultations() {
     <section id="approach" className="relative px-6 py-28 sm:py-36 md:px-16 lg:px-20">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.28em] text-white/40">
+          <p className="text-xs uppercase tracking-[0.28em] text-ink">
             Physician supervised
           </p>
           <h2
-            className="mt-5 max-w-2xl font-serif text-4xl leading-[1.05] text-white sm:text-5xl md:text-6xl"
+            className="mt-5 max-w-2xl font-display text-4xl leading-[1.05] text-charcoal sm:text-5xl md:text-6xl"
             style={{ letterSpacing: '-0.01em' }}
           >
-            A doctor guides <span className="italic">every protocol</span>
+            A doctor guides <span className="italic text-ink">every protocol</span>
           </h2>
-          <p className="mt-5 max-w-xl text-sm font-light leading-relaxed text-white/55 sm:text-base">
+          <p className="mt-5 max-w-xl text-sm font-normal leading-relaxed text-ink sm:text-base">
             Nothing is sold in a chat. You speak with a UK physician, receive a
             protocol, and your compounds are dispensed through a licensed pharmacy.
           </p>
@@ -45,10 +45,10 @@ export default function Consultations() {
 
         <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
-            <Reveal key={step.n} delay={i * 100} className="border-t border-white/15 pt-6">
-              <div className="font-serif text-5xl text-white/25">{step.n}</div>
-              <h3 className="mt-6 font-serif text-2xl text-white">{step.title}</h3>
-              <p className="mt-3 text-sm font-light leading-relaxed text-white/55">
+            <Reveal key={step.n} delay={i * 100} className="border-t border-line pt-6">
+              <div className="font-display text-5xl text-terracotta/35">{step.n}</div>
+              <h3 className="mt-6 font-display text-2xl text-charcoal">{step.title}</h3>
+              <p className="mt-3 text-sm font-normal leading-relaxed text-ink">
                 {step.body}
               </p>
             </Reveal>
@@ -58,7 +58,7 @@ export default function Consultations() {
         <Reveal className="mt-14">
           <a
             href="#booking"
-            className="inline-block bg-white px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-black transition hover:bg-white/90"
+            className="inline-block rounded-full bg-terracotta px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-cream transition hover:opacity-90"
           >
             Book a consultation
           </a>
