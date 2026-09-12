@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "npx --yes tsx --test src/lib/recommend/handler.test.ts"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",
