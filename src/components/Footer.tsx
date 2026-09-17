@@ -39,10 +39,10 @@ export default function Footer() {
               Contact
             </div>
             <a
-              href="https://wa.me/6282322133001"
+              href="https://wa.me/447424327888"
               className="text-sm font-light text-white/65 transition-colors hover:text-white"
             >
-              WhatsApp +62 823 2213 3001
+              WhatsApp +44 7424 327888
             </a>
             <span className="text-sm font-light text-white/45">
               Consultations by appointment

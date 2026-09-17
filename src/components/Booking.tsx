@@ -208,7 +208,14 @@ export default function Booking() {
               </button>
 
               <p className="text-center text-xs font-light text-white/35">
-                Or message us directly on WhatsApp at +62 823 2213 3001.
+                Or message us directly on WhatsApp at{' '}
+                <a
+                  href="https://wa.me/447424327888"
+                  className="text-white/55 transition-colors hover:text-white"
+                >
+                  +44 7424 327888
+                </a>
+                .
               </p>
             </form>
           )}
