@@ -1,3 +1,5 @@
+import { WHATSAPP_DISPLAY, WHATSAPP_URL, waLink } from '../lib/whatsapp'
+
 const FOOTER_LINKS = [
   { label: 'Peptides', href: '#peptides' },
   { label: 'Protocols', href: '#protocols' },
@@ -39,10 +41,16 @@ export default function Footer() {
               Contact
             </div>
             <a
-              href="https://wa.me/6282322133001"
+              href={WHATSAPP_URL}
               className="text-sm font-light text-white/65 transition-colors hover:text-white"
             >
-              WhatsApp +62 823 2213 3001
+              WhatsApp {WHATSAPP_DISPLAY}
+            </a>
+            <a
+              href={waLink()}
+              className="text-sm font-light text-white/65 transition-colors hover:text-white"
+            >
+              Enquire on WhatsApp
             </a>
             <span className="text-sm font-light text-white/45">
               Consultations by appointment

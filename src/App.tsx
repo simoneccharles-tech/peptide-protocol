@@ -5,6 +5,7 @@ import Protocols from './components/Protocols'
 import Consultations from './components/Consultations'
 import Booking from './components/Booking'
 import Footer from './components/Footer'
+import WhatsAppFloatingButton from './components/WhatsAppFloatingButton'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Consultations />
       <Booking />
       <Footer />
+      <WhatsAppFloatingButton />
     </div>
   )
 }

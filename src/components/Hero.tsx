@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, MessageCircle } from 'lucide-react'
+import { WHATSAPP_TEXT, waLink } from '../lib/whatsapp'
 
 const VIDEO_URL =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260715_082433_69699cf8-444b-4484-93cc-053e57896dfd.mp4'
@@ -76,14 +77,24 @@ export default function Hero() {
             Evidence based peptides. UK regulated. Real results.
           </motion.p>
 
-          <motion.a
-            variants={item}
-            href="#booking"
-            className="group mt-10 inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-black transition hover:bg-white/90"
-          >
-            Begin your protocol
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </motion.a>
+          <motion.div variants={item} className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+            <a
+              href="#booking"
+              className="group inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-black transition hover:bg-white/90"
+            >
+              Begin your protocol
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+            <a
+              href={waLink(WHATSAPP_TEXT.sourcing)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              Order directly on WhatsApp
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
