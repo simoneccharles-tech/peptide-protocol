@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Check, ArrowRight } from 'lucide-react'
 import { Reveal } from './Reveal'
+import { WHATSAPP_DISPLAY, WHATSAPP_URL } from '../lib/whatsapp'
 
 interface FormState {
   name: string
@@ -210,10 +211,10 @@ export default function Booking() {
               <p className="text-center text-xs font-light text-white/35">
                 Or message us directly on WhatsApp at{' '}
                 <a
-                  href="https://wa.me/447424327888"
+                  href={WHATSAPP_URL}
                   className="text-white/55 transition-colors hover:text-white"
                 >
-                  +44 7424 327888
+                  {WHATSAPP_DISPLAY}
                 </a>
                 .
               </p>

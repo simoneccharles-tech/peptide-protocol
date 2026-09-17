@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, X, CircleUserRound } from 'lucide-react'
+import { Menu, X, MessageCircle } from 'lucide-react'
+import { WHATSAPP_TEXT, waLink } from '../lib/whatsapp'
 
 const LINKS = [
   { label: 'Home', href: '#home' },
@@ -38,9 +39,15 @@ export default function Nav() {
         </motion.div>
 
         <div className="flex items-center gap-3">
-          <div className="liquid-glass hidden h-11 w-11 items-center justify-center rounded-full md:flex">
-            <CircleUserRound className="h-5 w-5 text-white/80" strokeWidth={1.5} />
-          </div>
+          <a
+            href={waLink(WHATSAPP_TEXT.ordering)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="liquid-glass hidden h-11 w-11 items-center justify-center rounded-full md:flex"
+          >
+            <MessageCircle className="h-5 w-5 text-white/80" strokeWidth={1.5} />
+          </a>
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setOpen((v) => !v)}
@@ -77,6 +84,16 @@ export default function Nav() {
           className="mt-4 bg-white px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-black"
         >
           Begin your protocol
+        </a>
+        <a
+          href={waLink(WHATSAPP_TEXT.ordering)}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setOpen(false)}
+          className="inline-flex items-center gap-2 text-sm font-medium text-white/80"
+        >
+          <MessageCircle className="h-4 w-4" aria-hidden="true" />
+          WhatsApp
         </a>
       </motion.div>
     </>
